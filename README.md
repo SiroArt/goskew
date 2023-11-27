@@ -12,7 +12,7 @@ of calculating error that requires only a printed object and calipers.
 
 # Installation
 
-Pre-compiled binaries for 64bit Windows, Linux, and OSX, can be found in [releases](https://github.com/Kranex/goskew/releases).
+Pre-compiled binaries for 64bit Windows, Linux, and OSX, can be found in [releases](https://github.com/olistrik/goskew/releases).
 Just grab the one you need and run it directly on the command line.
 
 If a release is not available for your system, or you just want to build it yourself, this can be done in one of two ways.
@@ -21,7 +21,7 @@ First of all you will need to [install Go](https://golang.org/doc/install) and m
 Then you can run:
 
 ```
-$ go install github.com/kranex/goskew
+$ go install github.com/olistrik/goskew
 $ goskew --help
 ```
 
@@ -30,7 +30,7 @@ Which will fetch and build this repo and add it to your `GOPATH`. It can then be
 Or you can clone and build the repo manually:
 
 ```
-$ git clone https://github.com/Kranex/goskew.git
+$ git clone https://github.com/olistrik/goskew.git
 $ cd goskew
 $ go build .
 $ ./goskew --help
@@ -38,9 +38,9 @@ $ ./goskew --help
 
 # Skew Calculation
 
-## Using [kranex.github.io/skew-it](https://kranex.github.io/skew-it/)
+## Using [olistrik.github.io/skew-it](https://olistrik.github.io/skew-it/)
 
-[Skew It](https://kranex.github.io/skew-it/) is an online calculator for calculating error tangent values using a test print.
+[Skew It](https://olistrik.github.io/skew-it/) is an online calculator for calculating error tangent values using a test print.
 
 1. Print the Skew It test print. The larger the better but keep in mind you will need to be able to reliably measure the diagonals of the cube.
 2. Measure the labeled diagonals in each plane you wish to calibrate. the cube has more labels than the calculator for future improvements.
@@ -79,12 +79,14 @@ Go Skew has two main commands:
 # xy, xz, and yz are xytan, xztan, and yztan respectively, if you don't need one, put in 0.
 # If you require a negative tan value, you can give it with the --xy=ERROR arguments to avoid the minus being read
 # as a flag.
-goskew err <xy> <xz> <yz> [--output=FILE] <file>
+# Example: goskew err --xy=-0.00191571 --xz=0.00212691 --yz=0 [--output=FILE] <inputfile>
+
+goskew err <xy> <xz> <yz> [--output=FILE] <inputfile>
 
 # base, left, and right are the lengths of the respective sides of the printed caliangle in milimeters.
 # If file is left out, the xytan is calculated and printed. This can then be with the err command so that
 # it doesn't need to be calculated every time.
-goskew tri <base> <left> <right> [--xz=ERROR --yz=ERROR --output=FILE] [<file>]
+goskew tri <base> <left> <right> [--xz=ERROR --yz=ERROR --output=FILE] [<inputfile>]
 
 ```
 
